@@ -13,10 +13,14 @@ import { fetchCalendarResults } from "../utils/api";
 import UdaciFitnessCalendar from "udacifitness-calendar";
 import MetricCard from "./MetricCard";
 import DateHeader from "./DateHeader";
+import { AppLoading } from "expo";
 
 import { white } from "../utils/colors";
 
 class History extends Component {
+  state = {
+    ready: false
+  };
   componentDidMount() {
     const { dispatch } = this.props;
 
@@ -59,6 +63,10 @@ class History extends Component {
   }
   render() {
     const { entries } = this.props;
+    const { ready } = this.state;
+    if (ready === false) {
+      return <AppLoading />;
+    }
     return (
       <UdaciFitnessCalendar
         items={entries}
