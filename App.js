@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux'
 import entries from './store/reducers';
+import History from "./components/History";
 
 
 export default class App extends React.Component {
@@ -12,7 +13,7 @@ export default class App extends React.Component {
     return (
       <Provider store={createStore(entries)}>
       <View style={{flex:1}}>
-        <AddEntry />
+        <History />
       </View>
       </Provider>
     );
